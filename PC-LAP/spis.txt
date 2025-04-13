@@ -12,12 +12,3 @@ alcohol – alkohol
 quality – jakość
 
 Class Weights: As I see it, the weights calculated are the inverse of the number of samples in a given class (i.e. the fewer samples in a class, the higher the weight). This is a good way to solve the class imbalance problem in classification.
-
-Wczytanie danych
-Usunięcie braków danych
-Normalizacja cech (np. Min-Max lub Z-score)
-One-hot encoding (dla etykiet nienumerycznych)
-Podział na dane treningowe/testowe
-Budowa modelu (np. sieci neuronowej)
-Trenowanie
-Ewaluacja i wizualizacja wyników
