@@ -1,0 +1,76 @@
+wine-quality_dataset	ALL DATASET
+
+wine-quality_Red_1 Kaggle, by Andrewmchen and Mateiz	
+https://github.com/mlflow/mlflow-example/blob/master/wine-quality.csv
+
+wine-quality_Red_2/3/4/5/6
+Kaggle, by Mustanger
+https://www.kaggle.com/code/eisgandar/red-wine-quality-eda-classification/input
+
+Kaggle, by Ryan Holbrook
+https://www.kaggle.com/code/ryanholbrook/stochastic-gradient-descent/data?select=red-wine.csv 
+
+Kaggle, by UC Irvine Machine Learning Repository
+https://archive.ics.uci.edu/dataset/186/wine+quality
+
+Github, by aniruddhachoudhury
+https://github.com/aniruddhachoudhury/Red-Wine-Quality/blob/master/winequality-red.csv
+
+Github, by JakubPluta
+https://github.com/JakubPluta/EDA-ML/blob/master/Wine/winequality_red.csv
+
+Red_1:
+Number of rows: 4898
+Class 3 has 20 samples
+Class 4 has 163 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples
+Class 8 has 175 samples
+Class 9 has 5 samples
+
+Red_2
+Number of rows: 1599
+Class 3 has 10 samples
+Class 4 has 53 samples
+Class 5 has 681 samples
+Class 6 has 638 samples
+Class 7 has 199 samples
+Class 8 has 18 samples
+
+Raw database
+Class 3 has 20 samples
+Class 4 has 163 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples
+Class 8 has 175 samples
+Class 9 has 5 samples
+
+Sub database Red_1 + Red_2:
+Class 3 has 20 samples	+ Class 3 has 10 samples
+Class 4 has 163 samples	+ Class 4 has 53 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples	+ Class 7 has 199 samples
+Class 8 has 175 samples	+ Class 8 has 18 samples
+Class 9 has 5 samples
+ = dataset:
+Class 3 has 30 samples
+Class 4 has 216 samples
+Class 5 has 681 samples
+Class 6 has 638 samples
+Class 7 has 1079 samples
+Class 8 has 193 samples
+Class 9 has 5 samples
+
+OVERSAMPLING:
+[3 * 10, 4 * 3, 5 * 1, 6 * 1, 7 * 1, 8 * 3, 9 * 6]
+
+Class 3 has 120 samples
+Class 4 has 322 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples
+Class 8 has 229 samples
+Class 9 has 5 samples
