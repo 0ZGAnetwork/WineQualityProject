@@ -19,6 +19,7 @@ https://github.com/aniruddhachoudhury/Red-Wine-Quality/blob/master/winequality-r
 Github, by JakubPluta
 https://github.com/JakubPluta/EDA-ML/blob/master/Wine/winequality_red.csv
 
+DATASET:
 Red_1:
 Number of rows: 4898
 Class 3 has 20 samples
@@ -38,7 +39,7 @@ Class 6 has 638 samples
 Class 7 has 199 samples
 Class 8 has 18 samples
 
-Raw database
+Raw database: 4898
 Class 3 has 20 samples
 Class 4 has 163 samples
 Class 5 has 1457 samples
@@ -47,7 +48,8 @@ Class 7 has 880 samples
 Class 8 has 175 samples
 Class 9 has 5 samples
 
-Sub database Red_1 + Red_2:
+CALCULATION:
+Sub database_Raw + Red_2:
 Class 3 has 20 samples	+ Class 3 has 10 samples
 Class 4 has 163 samples	+ Class 4 has 53 samples
 Class 5 has 1457 samples
@@ -65,12 +67,26 @@ Class 8 has 193 samples
 Class 9 has 5 samples
 
 OVERSAMPLING:
-[3 * 10, 4 * 3, 5 * 1, 6 * 1, 7 * 1, 8 * 3, 9 * 6]
+    3: 15,  # klasa 3 → 15 razy
+    4: 2,   # klasa 4 → 2 razy
+    8: 2,   # klasa 8 → 2 razy
+    9: 60   # klasa 9 → 60 razy
 
-Class 3 has 120 samples
-Class 4 has 322 samples
+FINAL DATABASE:
+Class 3 has 320 samples
+Class 4 has 489 samples
 Class 5 has 1457 samples
 Class 6 has 2198 samples
 Class 7 has 880 samples
-Class 8 has 229 samples
-Class 9 has 5 samples
+Class 8 has 525 samples
+Class 9 has 305 samples
+
+Na podstawie regresji liniowej i analizy korelacji
+Medium "Red Wine Quality Exploration" by Jerome Vonk since 2018
+https://medium.com/%40jeromevonk/red-wine-quality-exploration-ea88e6b0e3c5
+volatile acidity - wyższy, negatywnie, smak
+Alcohol -  wyższy, pozytywnie, jakość
+Sulphates - wyższy, pozytywnie, jakość
+citric acid - wyższy, pozytywnie, smak/świeżość
+
+

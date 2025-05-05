@@ -3,8 +3,8 @@ import os
 import sys
 
 # Pliki CSV
-source_file = "wine-quality_Red_1.csv"
-destination_file = "wine-quality_Red_2.csv"
+source_file = "wine-quality_Red_2.csv"
+destination_file = "wine-quality_dataset_raw.csv"
 
 # Wybrane klasy do przeniesienia
 selected_classes = {3, 4, 7, 8, 9}

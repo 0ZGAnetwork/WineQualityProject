@@ -4,14 +4,14 @@ import sys
 
 # Pliki źródłowy i docelowy
 source_file = "wine_quality_dataset_raw.csv"
-destination_file = "wine_quality_dataset.csv"
+destination_file = "wine_quality_dataset_raw.csv"
 
 # Mapa klas i ich współczynników powielania
 duplication_map = {
-    3: 10,  # klasa 3 → 10 razy
-    4: 4,   # klasa 4 → 4 razy
-    8: 8,   # klasa 8 → 8 razy
-    9: 11   # klasa 9 → 11 razy
+    3: 15,  # klasa 3 → 15 razy
+    4: 2,   # klasa 4 → 2 razy
+    8: 2,   # klasa 8 → 2 razy
+    9: 60   # klasa 9 → 60 razy
 }
 
 def duplicate_rows_by_class(source_file, destination_file, duplication_map):
