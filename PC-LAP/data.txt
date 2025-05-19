@@ -50,13 +50,7 @@ Class 9 has 5 samples
 
 CALCULATION:
 Sub database_Raw + Red_2:
-Class 3 has 20 samples	+ Class 3 has 10 samples
-Class 4 has 163 samples	+ Class 4 has 53 samples
-Class 5 has 1457 samples
-Class 6 has 2198 samples
-Class 7 has 880 samples	+ Class 7 has 199 samples
-Class 8 has 175 samples	+ Class 8 has 18 samples
-Class 9 has 5 samples
+
  = dataset:
 Class 3 has 30 samples
 Class 4 has 216 samples
@@ -89,4 +83,54 @@ Alcohol -  wyższy, pozytywnie, jakość
 Sulphates - wyższy, pozytywnie, jakość
 citric acid - wyższy, pozytywnie, smak/świeżość
 
+classterClass
+3 : 4
+9 : 8
 
+Raw database: 4898
+Class 3 has 20 samples
+Class 4 has 163 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples
+Class 8 has 175 samples
+Class 9 has 5 samples
+
+5class database: 3898
+Class 4 has 183 samples
+Class 5 has 1457 samples
+Class 6 has 2198 samples
+Class 7 has 880 samples
+Class 8 has 180 samples
+
+after oversampling 4,8:
+Database:
+Class 4 has 915 samples
+Class 5 has 2914 samples
+Class 6 has 4396 samples
+Class 7 has 1760 samples
+Class 8 has 900 samples
+
+ręczne napisanie funkcji:
+podział proporcjonalny do wielkości próbek
+% udział próbek z klasy (trenujące - 80% wszystkich próbek)
+ Value    Count   Percent
+      1      732      8.41%
+      2     2331     26.77%
+      3     3517     40.39%
+      4     1408     16.17%
+      5      720      8.27%
+
+after oversampling (5,6):
+Class 4 has 732 samples
+Class 5 has 1157 samples
+Class 6 has 1198 samples
+Class 7 has 880 samples
+Class 8 has 720 samples
+
+ Value    Count   Percent
+      1      586     15.63%
+      2      926     24.69%
+      3      958     25.55%
+      4      704     18.77%
+      5      576     15.36%

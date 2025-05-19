@@ -1,7 +1,7 @@
 import os
 
 # Plik docelowy
-destination_file = "wine-quality_dataset_raw.csv"
+destination_file = "wine-quality_dataset.csv"
 
 def clear_file(destination_file):
     if not os.path.exists(destination_file):
