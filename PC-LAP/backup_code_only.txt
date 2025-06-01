@@ -1,0 +1,94 @@
+close all; 
+fpath = fullfile(pwd,'wine-quality_dataset_5class_SMOTE.csv');                % File path
+fname = readtable(fpath, 'VariableNamingRule', 'preserve');      % Correct read file
+firstFive = head(fname, 5);                                      % Display first 5 rows
+verticalView = array2table(firstFive.Variables', ...
+    'VariableNames', strcat("Sample ", string(1:5)), ...
+    'RowNames', fname.Properties.VariableNames);
+disp(verticalView);
+
+X = fname{:,1:end-1};                                                    % for all features
+Y = fname{:, 12};
+
+X = normalize(X, 'range'); 
+
+Y_cat = categorical(Y);
+Y_encoded = dummyvar(Y_cat); 
+
+% cv = cvpartition(Y_cat,'Holdout',0.2);                                  % two set
+% X_train = X(training(cv),:);
+% Y_train = Y_encoded(training(cv),:);
+% X_test = X(test(cv), :);
+% Y_test = Y_encoded(test(cv), :);
+validClasses = unique(Y);
+trainIdx = [];
+testIdx = [];
+holdoutRatio = 0.2;
+for i = 1:length(validClasses)
+    classValue = validClasses(i);
+    classIndices = find(Y == classValue);
+    classIndices = classIndices(randperm(length(classIndices)));
+    numTest = round(holdoutRatio * length(classIndices)); 
+    testIdx = [testIdx; classIndices(1:numTest)];
+    trainIdx = [trainIdx; classIndices(numTest+1:end)];
+end
+X_train = X(trainIdx, :);
+Y_train = Y_encoded(trainIdx, :);
+X_test  = X(testIdx, :);
+Y_test  = Y_encoded(testIdx, :);
+%tabulate(vec2ind(Y_train')')
+
+X_train_weighted = X_train;
+net = patternnet([64, 32, 16]);                                         % Hidden layers
+net.trainFcn = 'trainscg';                                              % Scaled conjugate gradient
+net.layers{end}.transferFcn = 'softmax';                                % Last layers = output = classification
+net.performFcn = 'crossentropy';                                        % Function of cost
+net.trainParam.max_fail = 10;                                           % increase tolerant
+net.trainParam.epochs = 500;                                            % epochs
+
+Y_train_classes = vec2ind(Y_train')';
+numClasses = size(Y_train, 1);
+numSamplesPerClasses = histcounts(Y_train_classes, 0.5:1:(numClasses + 0.5));
+%disp(numSamplesPerClasses);
+
+classWeights = zeros(size(numSamplesPerClasses));
+nonzeroIdx = numSamplesPerClasses > 0;
+classWeights(nonzeroIdx) = 1 ./ numSamplesPerClasses(nonzeroIdx);
+classWeights = classWeights / max(classWeights);
+
+X_train_weighted = X_train_weighted';
+Y_train = Y_train';
+sampleWeights = classWeights(Y_train_classes)';
+net.trainParam.showWindow = true; 
+[net, tr] = train(net, X_train_weighted, Y_train,[],[], sampleWeights);  
+
+Y_pred = net(X_test');
+Y_pred_class = vec2ind(Y_pred);                                         % Change from one-hot to class index
+Y_test_class = vec2ind(Y_test');
+correct = (Y_pred_class == Y_test_class);  
+test_classes = vec2ind(Y_test')';
+testWeights = classWeights(test_classes)';
+correct = (Y_pred_class' == test_classes);
+weightedAccuracy = sum(correct .* testWeights) / sum(testWeights);
+fprintf('Weighted Accuracy: %.2f%%\n', weightedAccuracy * 100);                 
+
+cm = confusionmat(Y_test_class, Y_pred_class);
+precision = diag(cm)./sum(cm,2) + eps;
+recall = diag(cm)./(sum(cm,1)' + eps);
+f1 = 2 * (precision .* recall) ./ (precision + recall);                             % F1- score
+macroF1 = mean(f1(~isnan(f1)));
+% figure(4);
+% bar(macroF1);
+% xlabel('Macro F1- score');
+% ylabel('Macro F1- score');
+fprintf('Macro F1-score: %.2f\n', macroF1);
+
+figure(1);
+numClasses = size(Y_encoded, 2); 
+Y_test_vec = full(ind2vec(Y_test_class, numClasses));
+Y_pred_vec = full(ind2vec(Y_pred_class, numClasses));
+plotconfusion(Y_test_vec, Y_pred_vec);
+classLabels = {'4','5','6','7','8','F1'};
+ax = gca;
+ax.XTickLabel = classLabels;
+ax.YTickLabel = classLabels;
