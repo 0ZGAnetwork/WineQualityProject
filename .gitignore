@@ -1,0 +1,37 @@
+# CSV files
+wine-quality_Red_1.csv
+wine-quality_Red_1-kopia.csv
+wine-quality_Red_2.csv
+wine-quality_Red_2-kopia.csv
+wine-quality_White_1.csv
+wine-quality_White_2.csv
+wine-quality_bufor.csv
+wine-quality_dataset.csv
+wine-quality_dataset-kopia.csv
+wine_quality_dataset.csv
+
+# MATLAB Live Scripts (mlx)
+Classification_4_Features.mlx
+Classification_5class.mlx
+Classification_LevMarq.mlx
+Classification_SMOTE.mlx
+Classification_all_features.mlx
+
+# MATLAB scripts and text files
+test3.m
+gui_backup.txt
+
+# Archives and presentations
+*.zip
+*.pptx
+
+# Python files
+*.py
+
+# Other file types
+*.jifi
+*.pdf
+*.txt
+
+# VS Code settings folder
+.vscode/
